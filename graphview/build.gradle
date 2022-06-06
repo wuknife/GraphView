@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.vanniktech.maven.publish'
+apply plugin: "org.jetbrains.dokka"
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 30
-
+        minSdkVersion 21
+        targetSdkVersion 31
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
@@ -23,6 +23,26 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+
+    dokkaHtml.configure {
+        dokkaSourceSets {
+            named("main") {
+                noAndroidSdkLink.set(false)
+            }
+        }
+    }
+//    dokka {
+//        outputFormat = 'javadoc'
+//        outputDirectory = "$buildDir/dokka"
+//        configuration {
+//            skipDeprecated = true
+//            reportUndocumented = true
+//            skipEmptyPackages = true
+//            noJdkLink = true
+//            noStdlibLink = true
+//            noAndroidSdkLink = true
+//        }
+//    }
 }
 
 dependencies {
@@ -31,4 +51,5 @@ dependencies {
     implementation "androidx.annotation:annotation:1.2.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation "androidx.recyclerview:recyclerview:1.2.0"
+    implementation("io.coil-kt:coil:2.1.0")
 }

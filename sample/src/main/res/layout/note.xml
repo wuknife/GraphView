@@ -3,23 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_margin="10dp"
     android:background="@android:color/holo_blue_dark"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:padding="10dp" android:id="@+id/noteDetailView">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/noteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        tools:text="Node text here" />
+        tools:text="Note text here" />
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/noteImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:textStyle="bold"
+        android:maxWidth="100dp"
+        android:adjustViewBounds="true"
         tools:text="Node image here" />
 </LinearLayout>

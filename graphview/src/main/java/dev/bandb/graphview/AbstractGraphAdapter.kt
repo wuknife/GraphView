@@ -11,6 +11,8 @@ abstract class AbstractGraphAdapter<VH : RecyclerView.ViewHolder> : RecyclerView
 
     open fun getNode(position: Int): Node? = graph?.getNodeAtPosition(position)
     open fun getNodeData(position: Int): Any? = graph?.getNodeAtPosition(position)?.data
+//    get note data by node
+    open fun getNoteDataByNode(position: Int): Any? = graph?.getNodeAtPosition(position)?.note
 
     /**
      * Submits a new graph to be displayed.

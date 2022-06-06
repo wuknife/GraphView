@@ -9,6 +9,7 @@ import dev.bandb.graphview.layouts.tree.BuchheimWalkerLayoutManager
 import dev.bandb.graphview.layouts.tree.TreeEdgeDecoration
 import dev.bandb.graphview.sample.GraphActivity
 import dev.bandb.graphview.sample.R
+import dev.bandb.graphview.util.Label
 
 class BuchheimWalkerActivity : GraphActivity() {
 
@@ -28,18 +29,18 @@ class BuchheimWalkerActivity : GraphActivity() {
 
     public override fun createGraph(): Graph {
         val graph = Graph()
-        val node1 = Node(nodeText)
-        val node2 = Node(nodeText)
-        val node3 = Node(nodeText)
-        val node4 = Node(nodeText)
-        val node5 = Node(nodeText)
-        val node6 = Node(nodeText)
-        val node8 = Node(nodeText)
-        val node7 = Node(nodeText)
-        val node9 = Node(nodeText)
-        val node10 = Node(nodeText)
-        val node11 = Node(nodeText)
-        val node12 = Node(nodeText)
+        val node1 = Node(Label(nodeText))
+        val node2 = Node(Label(nodeText))
+        val node3 = Node(Label(nodeText))
+        val node4 = Node(Label(nodeText))
+        val node5 = Node(Label(nodeText))
+        val node6 = Node(Label(nodeText))
+        val node8 = Node(Label(nodeText))
+        val node7 = Node(Label(nodeText))
+        val node9 = Node(Label(nodeText))
+        val node10 = Node(Label(nodeText))
+        val node11 = Node(Label(nodeText))
+        val node12 = Node(Label(nodeText))
         graph.addEdge(node1, node2)
         graph.addEdge(node1, node3)
         graph.addEdge(node1, node4)

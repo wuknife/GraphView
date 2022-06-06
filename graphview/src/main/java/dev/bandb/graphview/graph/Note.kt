@@ -4,12 +4,15 @@ import dev.bandb.graphview.util.DisplayView
 import dev.bandb.graphview.util.Size
 import dev.bandb.graphview.util.VectorF
 
-data class Node(var data: DisplayView) {
-    // TODO make private
+/**
+ * Note,display DisplayView List
+ */
+data class Note(var displayView: DisplayView ?){
+
+    var  data: MutableList<DisplayView> = mutableListOf<DisplayView>()
+
     val position: VectorF = VectorF()
     val size: Size = Size()
-
-    var note: Note = Note(this.data)
 
     var height: Int
         get() = size.height
@@ -48,5 +51,12 @@ data class Node(var data: DisplayView) {
     fun setPosition(position: VectorF) {
         this.x = position.x
         this.y = position.y
+    }
+
+    fun addData(displayView: DisplayView){
+        data.add(displayView)
+    }
+    fun clearData(){
+        data.clear()
     }
 }

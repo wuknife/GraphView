@@ -5,6 +5,7 @@ import dev.bandb.graphview.graph.Edge
 import dev.bandb.graphview.graph.Graph
 import dev.bandb.graphview.graph.Node
 import dev.bandb.graphview.layouts.GraphLayoutManager
+import dev.bandb.graphview.util.Label
 import dev.bandb.graphview.util.Size
 import java.util.*
 import kotlin.collections.ArrayList
@@ -162,7 +163,7 @@ class SugiyamaLayoutManager @JvmOverloads constructor(private val context: Conte
                 val iterator = edges.iterator()
                 while (iterator.hasNext()) {
                     val edge = iterator.next()
-                    val dummy = Node(dummyText)
+                    val dummy = Node(Label(dummyText))
                     val dummyNodeData = SugiyamaNodeData()
                     dummyNodeData.isDummy = true
                     dummyNodeData.layer = indexNextLayer
