@@ -4,12 +4,22 @@ import dev.bandb.graphview.util.DisplayView
 import dev.bandb.graphview.util.Size
 import dev.bandb.graphview.util.VectorF
 
-data class Node(var data: DisplayView) {
+data class Node(var data: DisplayView)  {
     // TODO make private
     val position: VectorF = VectorF()
     val size: Size = Size()
-
-    var note: Note = Note(this.data)
+//    id
+    var id : String
+        get() = id
+        set(value) {
+            id = value
+        }
+    var test1 : String
+        get() = test1
+        set(value) {
+            test1 = value
+        }
+    var note: Note = Note(listOf(this.data))
 
     var height: Int
         get() = size.height

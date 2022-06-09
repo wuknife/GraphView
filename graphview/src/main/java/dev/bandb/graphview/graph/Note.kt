@@ -7,7 +7,7 @@ import dev.bandb.graphview.util.VectorF
 /**
  * Note,display DisplayView List
  */
-data class Note(var displayView: DisplayView ?){
+data class Note(var displayView: List<DisplayView> ?){
 
     var  data: MutableList<DisplayView> = mutableListOf<DisplayView>()
 
@@ -55,6 +55,10 @@ data class Note(var displayView: DisplayView ?){
 
     fun addData(displayView: DisplayView){
         data.add(displayView)
+    }
+
+    fun addDatas(displayViews: List<DisplayView>){
+        data.addAll(displayViews)
     }
     fun clearData(){
         data.clear()
