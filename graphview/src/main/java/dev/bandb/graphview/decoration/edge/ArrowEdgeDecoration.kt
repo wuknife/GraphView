@@ -4,6 +4,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.CornerPathEffect
 import android.graphics.Paint
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import dev.bandb.graphview.AbstractGraphAdapter
 
@@ -47,6 +48,11 @@ open class ArrowEdgeDecoration constructor(private val linePaint: Paint = Paint(
                     clippedLine[1],
                     triangleCentroid[0],
                     triangleCentroid[1], linePaint)
+            Log.d("ArrowEdge","------------------- c.drawLine :---------------------")
+            Log.d("ArrowEdge","clippedLine[0]:"+clippedLine[0])
+            Log.d("ArrowEdge","clippedLine[1]:"+clippedLine[1])
+            Log.d("ArrowEdge","triangleCentroid[0]:"+triangleCentroid[0])
+            Log.d("ArrowEdge","triangleCentroid[1]:"+triangleCentroid[1])
         }
     }
 }

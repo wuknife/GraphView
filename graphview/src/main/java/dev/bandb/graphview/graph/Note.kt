@@ -7,7 +7,7 @@ import dev.bandb.graphview.util.VectorF
 /**
  * Note,display DisplayView List
  */
-data class Note(var displayView: List<DisplayView> ?){
+data class Note(val timestamp:Long){
 
     var  data: MutableList<DisplayView> = mutableListOf<DisplayView>()
 

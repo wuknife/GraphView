@@ -1,5 +1,7 @@
 package dev.bandb.graphview.graph
 
+import android.util.Log
+
 class Graph {
     private val _nodes = arrayListOf<Node>()
     private val _edges = arrayListOf<Edge>()
@@ -14,6 +16,20 @@ class Graph {
     fun addNode(node: Node) {
         if (node !in _nodes) {
             _nodes.add(node)
+        }
+        else{
+            println("--------------test node begin--------------------")
+            println("node hashCode =["+node.hashCode()+"]")
+            println("node toString =["+node.toString()+"]")
+            println("_nodes toString list :")
+            for(tempNode:Node in _nodes ){
+                println(tempNode.toString())
+            }
+            println("_nodes hashCode list :"+node.hashCode()+"]")
+            for(tempNode:Node in _nodes ){
+                println(tempNode.hashCode())
+            }
+            println("--------------test node end--------------------")
         }
     }
 
@@ -44,7 +60,7 @@ class Graph {
     fun removeNodes(vararg nodes: Node) = nodes.forEach { removeNode(it) }
 
     fun addEdge(source: Node, destination: Node): Edge {
-        val edge = Edge(source, destination)
+        val edge = Edge(source, destination,System.currentTimeMillis())
         addEdge(edge)
 
         return edge

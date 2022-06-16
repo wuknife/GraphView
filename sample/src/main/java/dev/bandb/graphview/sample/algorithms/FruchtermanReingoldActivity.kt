@@ -18,22 +18,30 @@ class FruchtermanReingoldActivity : GraphActivity() {
     public override fun setLayoutManager() {
         recyclerView.layoutManager = FruchtermanReingoldLayoutManager(this, 1000)
     }
-
+    var index:Int = 0
     public override fun setEdgeDecoration() {
         recyclerView.addItemDecoration(ArrowEdgeDecoration())
     }
 
     public override fun createGraph(): Graph {
         val graph = Graph()
-        var a = Node(Label(nodeText) )
-        var b = Node(Label(nodeText))
-        var c = Node(Label(nodeText))
-        var d = Node(Label(nodeText))
-        var e = Node(Label(nodeText))
-        var f = Node(Label(nodeText))
-        var g = Node(Label(nodeText))
-        var h = Node(Label(nodeText))
-
+//        Image(imageUrl)
+        var a = Node(Label(nodeText),System.currentTimeMillis() )
+        var b = Node(Label(nodeText),System.currentTimeMillis())
+        var c = Node(Label(nodeText),System.currentTimeMillis())
+        var d = Node(Label(nodeText),System.currentTimeMillis())
+        var e = Node(Label(nodeText),System.currentTimeMillis())
+        var f = Node(Label(nodeText),System.currentTimeMillis())
+        var g = Node(Label(nodeText),System.currentTimeMillis())
+        var h = Node(Label(nodeText),System.currentTimeMillis())
+//        a = addNodeId(a)
+//        b = addNodeId(b)
+//        c = addNodeId(c)
+//        d = addNodeId(d)
+//        e = addNodeId(e)
+//        f = addNodeId(f)
+//        g = addNodeId(g)
+//        h = addNodeId(h)
         a.note = getNote();
         b.note = getNote();
         c.note = getNote();
@@ -50,7 +58,15 @@ class FruchtermanReingoldActivity : GraphActivity() {
         var fc = graph.addEdge(f, c)
         var gc = graph.addEdge(g, c)
         var hg = graph.addEdge(h, g)
-
+        ab = addEdgeId(ab)
+        ac = addEdgeId(ac)
+        ab = addEdgeId(ab)
+        ad = addEdgeId(ad)
+        ce = addEdgeId(ce)
+        df = addEdgeId(df)
+        fc = addEdgeId(fc)
+        gc = addEdgeId(gc)
+        hg = addEdgeId(hg)
         ab.note  = getNote();
         ac.note  = getNote();
         ad.note  = getNote();
@@ -62,6 +78,19 @@ class FruchtermanReingoldActivity : GraphActivity() {
 
         return graph
     }
+
+    private fun addEdgeId(edge: Edge): Edge {
+        index++
+        edge.id = index.toString()
+        return edge
+    }
+
+    private fun addNodeId(node: Node): Node {
+        index++
+        node.id = index.toString()
+        return node
+    }
+
     private fun randomBoolean():Boolean{
         var ranInt:Int = (0..1).random()
         var result :Boolean
@@ -94,7 +123,7 @@ class FruchtermanReingoldActivity : GraphActivity() {
      */
     private fun getNote(): Note {
 
-        var note:Note = Note(null)
+        var note:Note = Note(System.currentTimeMillis())
 
         note.addData(getDisplayViewRandom(nodeText))
         while (randomBoolean()){

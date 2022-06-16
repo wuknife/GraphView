@@ -3,6 +3,7 @@ package dev.bandb.graphview.sample
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -165,7 +166,7 @@ abstract class GraphActivity : AppCompatActivity() {
 
     }
 
-    private fun setupGraphView(graph: Graph) {
+    protected fun setupGraphView(graph: Graph) {
         adapter = object : AbstractGraphAdapter<NodeViewHolder>() {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NodeViewHolder {
                 val view = LayoutInflater.from(parent.context)
@@ -178,9 +179,18 @@ abstract class GraphActivity : AppCompatActivity() {
 
                 this@GraphActivity.runOnUiThread(java.lang.Runnable {
                     if (dv is Label) {
-                        holder.textView.text = dv.text
+                        holder.textView.text = dv.getName()
+                        holder.textView.visibility = View.VISIBLE
+                        holder.imageView.visibility = View.GONE
                     } else if (dv is Image) {
+
+                        holder.textView.text = dv.getName()
+                        holder.textView.visibility = View.VISIBLE
                         if (dv.url != null) {
+                            Log.e("image","-------image 1 run----------")
+                            holder.textView.text = " 图片1 "
+                            holder.textView.visibility = View.VISIBLE
+                            holder.imageView.visibility = View.GONE
                             GlobalScope.launch {
                                 val request = ImageRequest.Builder(context)
                                     .data(dv.url)
@@ -191,45 +201,10 @@ abstract class GraphActivity : AppCompatActivity() {
                         }
                     }
                 })
-
-
             }
-        }.apply {
-            this.submitGraph(graph)
-             fun setupGraphView(graph: Graph) {
-                adapter = object : AbstractGraphAdapter<NodeViewHolder>() {
-                    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NodeViewHolder {
-                        val view = LayoutInflater.from(parent.context)
-                            .inflate(R.layout.node, parent, false)
-                        return NodeViewHolder(view)
-                    }
-
-                    override fun onBindViewHolder(holder: NodeViewHolder, position: Int) {
-                        var dv = getNode(position)!!.data
-
-                        this@GraphActivity.runOnUiThread(java.lang.Runnable {
-                            if (dv is Label) {
-                                holder.textView.text = dv.text
-                            } else if (dv is Image) {
-
-                                GlobalScope.launch {
-                                    val request = ImageRequest.Builder(context)
-                                        .data(dv.url)
-                                        .target(holder.imageView)
-                                        .build()
-                                    val result = imageLoader.execute(request)
-                                }
-                            }
-                        })
-                    }
-                }.apply {
-                    this.submitGraph(graph)
-                    recyclerView.adapter = this
-                }
-            }
-
-            recyclerView.adapter = this
         }
+        recyclerView.adapter = adapter
+        adapter.submitGraph(graph)
     }
 
     private fun setupFab(graph: Graph) {

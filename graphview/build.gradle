@@ -1,6 +1,23 @@
+buildscript {
+    ext.kotlin_version = '1.5.30'
+    ext.dokka_version = '1.6.20'
+    repositories {
+        google()
+        mavenCentral()
+//        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.13.0'
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
+
+    }
+}
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.vanniktech.maven.publish'
+//apply plugin: 'com.vanniktech.maven.publish'
 apply plugin: "org.jetbrains.dokka"
 
 android {
@@ -46,7 +63,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.appcompat:appcompat:1.2.0"
     implementation "androidx.annotation:annotation:1.2.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"

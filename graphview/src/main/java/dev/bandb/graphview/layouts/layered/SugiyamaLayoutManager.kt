@@ -163,7 +163,7 @@ class SugiyamaLayoutManager @JvmOverloads constructor(private val context: Conte
                 val iterator = edges.iterator()
                 while (iterator.hasNext()) {
                     val edge = iterator.next()
-                    val dummy = Node(Label(dummyText))
+                    val dummy = Node(Label(dummyText),System.currentTimeMillis())
                     val dummyNodeData = SugiyamaNodeData()
                     dummyNodeData.isDummy = true
                     dummyNodeData.layer = indexNextLayer
