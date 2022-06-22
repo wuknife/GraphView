@@ -3,6 +3,8 @@ package dev.bandb.graphview.sample
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.TextView.AUTO_SIZE_TEXT_TYPE_UNIFORM
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +21,7 @@ import coil.ImageLoader
 import coil.memory.MemoryCache
 import coil.request.ImageRequest
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import dev.bandb.graphview.AbstractGraphAdapter
 import dev.bandb.graphview.graph.Graph
 import dev.bandb.graphview.graph.Node
@@ -245,6 +249,9 @@ abstract class GraphActivity : AppCompatActivity() {
     }
 
 
+    var runnable= Runnable {
+        Toast.makeText(baseContext,"Handler Running ",Toast.LENGTH_SHORT).show()
+    }
     protected inner class NodeViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textView: TextView = itemView.findViewById(R.id.textView)
         var imageView: ImageView = itemView.findViewById(R.id.imageView)
@@ -261,8 +268,9 @@ abstract class GraphActivity : AppCompatActivity() {
                     displayNote(currentNode!!.note)
                 }
 
-//                Snackbar.make(itemView, "Clicked on " + currentNode!!.data?.toString(),
-//                        Snackbar.LENGTH_SHORT).show()
+//                handler.post(runnable);
+                Snackbar.make(itemView, "Clicked on " + currentNode!!.data?.toString(),
+                        Snackbar.LENGTH_SHORT).show()
             }
         }
     }
@@ -270,3 +278,4 @@ abstract class GraphActivity : AppCompatActivity() {
     protected val nodeText: String
         get() = "Node " + nodeCount++
 }
+
