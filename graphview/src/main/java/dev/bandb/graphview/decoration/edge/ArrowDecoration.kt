@@ -85,7 +85,7 @@ open class ArrowDecoration constructor(private val linePaint: Paint = Paint(Pain
             }
 
 
-            c.drawTextOnPath(displayView.text!!,linkPath, 70f, 50f,paint)
+            c.drawTextOnPath(displayView.text!!,linkPath, centerOffset, 50f,paint)
 //            draw path to find reason for text position
 
 //            c.drawPath(linkPath,paint)
@@ -142,7 +142,8 @@ open class ArrowDecoration constructor(private val linePaint: Paint = Paint(Pain
         p.textSize = fontSize.toFloat()
         val textWidth = p.measureText(text)
         val result = ((widthToFitStringInto - textWidth) / 2f)
-//       - (fontSize / 2f)
+//        - (fontSize / 2f)
+//
 //        Log.d("ApproxXToCenterText","text:["+text+"],widthToFitStringInto:["+widthToFitStringInto+"],textWidth:["+textWidth+"]"+
 //                ",fontSize:["+fontSize+"],result:["+fontSize+"]")
         return result
@@ -152,10 +153,9 @@ open class ArrowDecoration constructor(private val linePaint: Paint = Paint(Pain
      */
     protected fun getPath(clippedLine: FloatArray): Path {
         val linkPath = Path()
-        linkPath.reset()
         linkPath.moveTo(clippedLine[0],clippedLine[1])
         linkPath.lineTo(clippedLine[2],clippedLine[3])
-        linkPath.close()
+
         return linkPath
     }
     protected fun clipLine(

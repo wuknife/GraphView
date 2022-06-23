@@ -83,15 +83,19 @@ class FruchtermanReingoldLayoutManager @JvmOverloads constructor(private val con
         val size = findBiggestSize(graph) * graph.nodeCount
         w = size
         h = size
+        val tFactor = 0.1
+        val kFactor = 0.75
+        val attkFactor = 0.75f
+        val repuFactor = 1f
 
         val nodes = graph.nodes
         val edges = graph.edges
 
-        t = (0.1 * sqrt((w / 2f * h / 2f).toDouble())).toFloat()
-        k = (0.75 * sqrt((w * h / nodes.size.toFloat()).toDouble())).toFloat()
+        t = (tFactor * sqrt((w / 2f * h / 2f).toDouble())).toFloat()
+        k = (kFactor * sqrt((w * h / nodes.size.toFloat()).toDouble())).toFloat()
 
-        attraction_k = 0.75f * k
-        repulsion_k = 0.75f * k
+        attraction_k = attkFactor * k
+        repulsion_k = repuFactor * k
 
         randomize(nodes)
 
