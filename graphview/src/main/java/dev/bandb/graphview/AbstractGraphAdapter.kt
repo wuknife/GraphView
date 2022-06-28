@@ -1,11 +1,13 @@
 package dev.bandb.graphview
 
+import android.view.View
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.RecyclerView
 import dev.bandb.graphview.graph.Graph
 import dev.bandb.graphview.graph.Node
 
-abstract class AbstractGraphAdapter<VH : RecyclerView.ViewHolder> : RecyclerView.Adapter<VH>() {
+abstract class AbstractGraphAdapter<VH : RecyclerView.ViewHolder>(var view:View) : RecyclerView.Adapter<VH>( ) {
+    public  var rootView = view
     var graph: Graph? = null
     override fun getItemCount(): Int = graph?.nodeCount ?: 0
 
