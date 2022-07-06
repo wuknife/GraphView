@@ -54,6 +54,8 @@ abstract class GraphLayoutManager internal constructor(context: Context)
 
     override fun onMeasure(recycler: RecyclerView.Recycler, state: RecyclerView.State,
                            widthSpec: Int, heightSpec: Int) {
+
+        Log.d("GraphLayoutManager", "hashCode["+this.hashCode()+"].onMeasure("+widthSpec+","+heightSpec+")")
         val adapter = adapter
         if (adapter == null) {
             Log.e("GraphLayoutManager", "No adapter attached; skipping layout")
@@ -119,6 +121,8 @@ abstract class GraphLayoutManager internal constructor(context: Context)
 
         val size = run(graph, paddingLeft.toFloat(), paddingTop.toFloat())
         setMeasuredDimension(size.width + paddingRight + paddingLeft, size.height + paddingBottom + paddingTop)
+
+        Log.d("GraphLayoutManager", "hashCode["+this.hashCode()+"].setMeasuredDimension("+size.width + paddingRight + paddingLeft+","+size.height + paddingBottom + paddingTop+")")
     }
 
     private fun positionItems(recycler: RecyclerView.Recycler,

@@ -85,8 +85,8 @@ class FruchtermanReingoldLayoutManager @JvmOverloads constructor(private val con
         h = size
         val tFactor = 0.1
         val kFactor = 0.75
-        val attkFactor = 0.75f
-        val repuFactor = 1f
+        val attkFactor = 0.4f
+        val repuFactor = 0.4f
 
         val nodes = graph.nodes
         val edges = graph.edges
