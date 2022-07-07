@@ -9,8 +9,12 @@ interface DisplayView {
 //    public var imageWidth : Int
 //    public var imageHeight : Int
     /**
-     * getViewName
+     * get DisplayView Key
      */
-    public fun getName() : String
+    public fun getKey() : String
 
+    /**
+     * set DisplayView Key
+     */
+    public fun setKey( paramKey: String)
 }

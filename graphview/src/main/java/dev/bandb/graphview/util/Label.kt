@@ -6,8 +6,13 @@ package dev.bandb.graphview.util
 data class Label constructor(var text: String ?,var size: Int =10) :DisplayView{
 
     private var viewType = "Label"
-
-    override fun getName():String {
-        return viewType
+    private var key = ""
+    override fun getKey():String {
+        return key
     }
+
+    override fun setKey(tempKey: String) {
+       key = tempKey
+    }
+
 }

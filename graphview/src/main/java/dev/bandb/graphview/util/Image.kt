@@ -4,14 +4,17 @@ data class Image( var width:Int = 85, var height:Int = 114 ) :DisplayView{
     public lateinit var url:String
 
 
+    private var key = ""
+
     constructor(url:String) : this() {
         this.url = url
     }
     private var viewType = "Image"
-    override fun getName(): String {
-        return viewType
+    override fun getKey():String {
+        return key
     }
-    public fun test():String{
-        return "test"
+
+    override fun setKey(tempKey: String) {
+        key = tempKey
     }
 }
